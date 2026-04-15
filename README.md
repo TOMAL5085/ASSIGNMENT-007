@@ -1,16 +1,71 @@
-# React + Vite
+﻿# KeenKeeper - Keep Your Friendships Alive
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+KeenKeeper is a responsive friendship tracker built with React. It helps users keep meaningful relationships active by tracking friends, interaction goals, overdue contacts, and communication history.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The app includes a complete multi-page experience inspired by the provided design:
 
-## React Compiler
+- Home dashboard with summary cards and friend cards
+- Friend details page with goals and quick check-in actions
+- Timeline page with interaction history and filters
+- Stats page with interaction analytics chart
+- Custom 404 page for invalid routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React 19
+- React Router DOM
+- Tailwind CSS (via Vite plugin)
+- Recharts (for analytics chart)
+- Lucide React (navigation/action icons)
+- Vite
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Key Features
+
+1. **Responsive UI on all screen sizes**
+   - Optimized layouts for mobile, tablet, and desktop.
+
+2. **Dynamic interaction timeline**
+   - Clicking **Call**, **Text**, or **Video** on the Friend Details page adds a new timeline entry automatically with current date and title.
+   - Timeline supports filtering by interaction type.
+
+3. **Live analytics**
+   - Friendship Analytics page displays a pie chart of Call/Text/Video counts based on real timeline data.
+
+## Data Structure
+
+Friend data is fetched from `public/friends.json` and includes:
+
+- `id`
+- `name`
+- `picture`
+- `email`
+- `days_since_contact`
+- `status` (`overdue`, `almost due`, `on-track`)
+- `tags`
+- `bio`
+- `goal`
+- `next_due_date`
+
+## Deployment/Reload Safety
+
+SPA route fallback is included for deployment so page refresh on nested routes does not break:
+
+- `public/_redirects` for Netlify
+- `vercel.json` rewrite rule for Vercel
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Build for Production
+
+```bash
+npm run build
+npm run preview
+```
+
