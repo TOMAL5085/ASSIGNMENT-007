@@ -168,6 +168,7 @@ a {
   box-shadow: var(--shadow-card);
   text-align: center;
   padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .summary-card h2 {
@@ -217,10 +218,11 @@ a {
   align-items: center;
   gap: 0.18rem;
   cursor: pointer;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .friend-card:hover {
+  transform: translateY(-2px);
   border-color: #d8dde2;
   box-shadow: 0 5px 14px rgba(40, 50, 68, 0.08);
 }
@@ -347,6 +349,7 @@ a {
   border-radius: 0.45rem;
   padding: 1.05rem;
   box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .friend-avatar-lg {
@@ -516,6 +519,7 @@ a {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .timeline-item-icon {
@@ -541,6 +545,16 @@ a {
   color: #93a0b1;
   font-size: 0.79rem;
   font-weight: 600;
+}
+
+@media (hover: hover) {
+  .summary-card:hover,
+  .panel:hover,
+  .timeline-item:hover {
+    transform: translateY(-2px);
+    border-color: #d8dde2;
+    box-shadow: 0 6px 16px rgba(40, 50, 68, 0.09);
+  }
 }
 
 .analytics-panel {
