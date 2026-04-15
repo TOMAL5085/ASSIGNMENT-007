@@ -8,35 +8,14 @@
   useState
 } from 'react'
 import { interactionTitle } from '../utils/formatters'
-import { seedTimelineEntries } from '../data/seedTimelineEntries'
-
-const TIMELINE_STORAGE_KEY = 'keenkeeper.timeline.entries'
 
 const AppContext = createContext(null)
-
-const readSavedTimeline = () => {
-  if (typeof window === 'undefined') {
-    return seedTimelineEntries
-  }
-
-  try {
-    const raw = window.localStorage.getItem(TIMELINE_STORAGE_KEY)
-    if (!raw) return seedTimelineEntries
-
-    const parsed = JSON.parse(raw)
-    if (!Array.isArray(parsed)) return seedTimelineEntries
-
-    return parsed
-  } catch {
-    return seedTimelineEntries
-  }
-}
 
 export const AppProvider = ({ children }) => {
   const [friends, setFriends] = useState([])
   const [isFriendsLoading, setIsFriendsLoading] = useState(true)
   const [friendsError, setFriendsError] = useState('')
-  const [timelineEntries, setTimelineEntries] = useState(readSavedTimeline)
+  const [timelineEntries, setTimelineEntries] = useState([])
   const [toast, setToast] = useState(null)
   const toastTimeout = useRef(null)
 
@@ -80,10 +59,6 @@ export const AppProvider = ({ children }) => {
     }
   }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem(TIMELINE_STORAGE_KEY, JSON.stringify(timelineEntries))
-  }, [timelineEntries])
-
   useEffect(
     () => () => {
       if (toastTimeout.current) {
@@ -105,17 +80,20 @@ export const AppProvider = ({ children }) => {
     }, 3000)
   }, [])
 
-  const addInteraction = useCallback((type, friend) => {
-    const entry = {
-      id: Date.now(),
-      type,
-      title: interactionTitle(type, friend.name),
-      date: new Date().toISOString()
-    }
+  const addInteraction = useCallback(
+    (type, friend) => {
+      const entry = {
+        id: Date.now(),
+        type,
+        title: interactionTitle(type, friend.name),
+        date: new Date().toISOString()
+      }
 
-    setTimelineEntries((prev) => [entry, ...prev])
-    showToast(`${entry.title} added to timeline.`)
-  }, [showToast])
+      setTimelineEntries((prev) => [entry, ...prev])
+      showToast(`${entry.title} added to timeline.`)
+    },
+    [showToast]
+  )
 
   const value = useMemo(
     () => ({
@@ -150,4 +128,3 @@ export const useAppContext = () => {
 
   return context
 }
-
