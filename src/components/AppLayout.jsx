@@ -5,7 +5,7 @@ import Toast from './Toast'
 import { useAppContext } from '../context/AppContext'
 
 const AppLayout = () => {
-  const { toast } = useAppContext()
+  const { toasts } = useAppContext()
 
   return (
     <div className="site-root">
@@ -14,7 +14,7 @@ const AppLayout = () => {
         <Outlet />
       </main>
       <Footer />
-      <Toast message={toast?.message} />
+      <Toast toasts={toasts} />
     </div>
   )
 }

@@ -46,24 +46,28 @@ const TimelinePage = () => {
         ))}
       </select>
 
-      <div className="timeline-list">
-        {filteredEntries.map((entry) => {
-          const [action, person] = entry.title.split(' with ')
+      {filteredEntries.length === 0 ? (
+        <p className="empty-state-message">No data found!</p>
+      ) : (
+        <div className="timeline-list">
+          {filteredEntries.map((entry) => {
+            const [action, person] = entry.title.split(' with ')
 
-          return (
-            <article key={entry.id} className="timeline-item">
-              <InteractionIcon type={entry.type} className="timeline-item-icon" />
-              <div>
-                <p className="timeline-item-title">
-                  <span>{action}</span>
-                  <span> with {person}</span>
-                </p>
-                <p className="timeline-item-date">{formatDateLabel(entry.date)}</p>
-              </div>
-            </article>
-          )
-        })}
-      </div>
+            return (
+              <article key={entry.id} className="timeline-item">
+                <InteractionIcon type={entry.type} className="timeline-item-icon" />
+                <div>
+                  <p className="timeline-item-title">
+                    <span>{action}</span>
+                    <span> with {person}</span>
+                  </p>
+                  <p className="timeline-item-date">{formatDateLabel(entry.date)}</p>
+                </div>
+              </article>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

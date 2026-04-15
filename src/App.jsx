@@ -15,8 +15,8 @@ function App() {
         <Route path="/timeline" element={<TimelinePage />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="*" element={<NotFoundPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

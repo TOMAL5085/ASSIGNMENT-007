@@ -34,37 +34,43 @@ const StatsPage = () => {
       <section className="panel analytics-panel">
         <h2>By Interaction Type</h2>
 
-        <div className="chart-wrap">
-          <ResponsiveContainer width="100%" height={290}>
-            <PieChart>
-              <Pie
-                data={chartData}
-                dataKey="value"
-                innerRadius={56}
-                outerRadius={85}
-                paddingAngle={3}
-                cornerRadius={6}
-              >
-                {chartData.map((entry) => (
-                  <Cell key={entry.key} fill={colorByType[entry.key]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-
-        <div className="chart-legend">
-          {chartData.map((entry) => (
-            <div key={entry.key} className="legend-item">
-              <span
-                className="legend-dot"
-                style={{ backgroundColor: colorByType[entry.key] }}
-              />
-              <span>{entry.name}</span>
+        {timelineEntries.length === 0 ? (
+          <p className="empty-state-message">No interactions logged yet.</p>
+        ) : (
+          <>
+            <div className="chart-wrap">
+              <ResponsiveContainer width="100%" height={290}>
+                <PieChart>
+                  <Pie
+                    data={chartData}
+                    dataKey="value"
+                    innerRadius={56}
+                    outerRadius={85}
+                    paddingAngle={3}
+                    cornerRadius={6}
+                  >
+                    {chartData.map((entry) => (
+                      <Cell key={entry.key} fill={colorByType[entry.key]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
             </div>
-          ))}
-        </div>
+
+            <div className="chart-legend">
+              {chartData.map((entry) => (
+                <div key={entry.key} className="legend-item">
+                  <span
+                    className="legend-dot"
+                    style={{ backgroundColor: colorByType[entry.key] }}
+                  />
+                  <span>{entry.name}</span>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </section>
     </div>
   )

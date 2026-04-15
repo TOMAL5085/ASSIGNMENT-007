@@ -4,7 +4,6 @@
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState
 } from 'react'
 import { interactionTitle } from '../utils/formatters'
@@ -16,8 +15,7 @@ export const AppProvider = ({ children }) => {
   const [isFriendsLoading, setIsFriendsLoading] = useState(true)
   const [friendsError, setFriendsError] = useState('')
   const [timelineEntries, setTimelineEntries] = useState([])
-  const [toast, setToast] = useState(null)
-  const toastTimeout = useRef(null)
+  const [toasts, setToasts] = useState([])
 
   useEffect(() => {
     let isCancelled = false
@@ -59,24 +57,19 @@ export const AppProvider = ({ children }) => {
     }
   }, [])
 
-  useEffect(
-    () => () => {
-      if (toastTimeout.current) {
-        clearTimeout(toastTimeout.current)
-      }
-    },
-    []
-  )
+  const showToast = useCallback((payload) => {
+    const nextToast =
+      typeof payload === 'string'
+        ? { message: payload }
+        : {
+            message: payload?.message || ''
+          }
 
-  const showToast = useCallback((message) => {
-    setToast({ message, id: Date.now() })
+    const id = Date.now() + Math.random()
+    setToasts((prev) => [...prev, { ...nextToast, id }])
 
-    if (toastTimeout.current) {
-      clearTimeout(toastTimeout.current)
-    }
-
-    toastTimeout.current = setTimeout(() => {
-      setToast(null)
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((toast) => toast.id !== id))
     }, 3000)
   }, [])
 
@@ -90,7 +83,7 @@ export const AppProvider = ({ children }) => {
       }
 
       setTimelineEntries((prev) => [entry, ...prev])
-      showToast(`${entry.title} added to timeline.`)
+      showToast(`${entry.title}!`)
     },
     [showToast]
   )
@@ -101,7 +94,7 @@ export const AppProvider = ({ children }) => {
       isFriendsLoading,
       friendsError,
       timelineEntries,
-      toast,
+      toasts,
       addInteraction,
       showToast
     }),
@@ -110,7 +103,7 @@ export const AppProvider = ({ children }) => {
       isFriendsLoading,
       friendsError,
       timelineEntries,
-      toast,
+      toasts,
       addInteraction,
       showToast
     ]
@@ -128,3 +121,5 @@ export const useAppContext = () => {
 
   return context
 }
+
+
