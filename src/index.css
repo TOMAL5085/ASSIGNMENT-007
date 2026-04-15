@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root {
-  --bg-page: #eef0f3;
+  --bg-page: #f3f5f8;
   --bg-surface: #ffffff;
   --text-primary: #1f2937;
   --text-muted: #8b97a7;
@@ -609,60 +609,77 @@ a {
 }
 
 .site-footer {
-  margin-top: 2rem;
-  background: var(--green);
-  color: #f0faf6;
+  margin-top: 0;
+  background: #245c4c;
+  color: #f3fbf7;
 }
 
 .footer-main {
-  padding-block: 2.7rem 1.1rem;
+  padding-block: 3.3rem 1.35rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-logo {
-  width: min(420px, 82%);
+  width: min(400px, 78%);
   height: auto;
+  display: block;
+  margin-inline: auto;
 }
 
 .footer-subtitle {
-  margin: 0.6rem auto 1.2rem;
-  max-width: 600px;
-  font-size: 0.92rem;
-  color: #bfd7cd;
+  margin: 0.8rem auto 1.35rem;
+  max-width: 640px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #c7dbd2;
 }
 
 .footer-heading {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #ebf7f2;
 }
 
 .footer-socials {
-  margin-top: 0.7rem;
+  margin-top: 0.75rem;
   display: inline-flex;
-  gap: 0.55rem;
+  gap: 0.45rem;
 }
 
 .footer-social-link {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
+  border-radius: 999px;
+  transition: transform 0.2s ease;
+}
+
+.footer-social-link:hover {
+  transform: translateY(-1px);
 }
 
 .footer-social-link img {
-  width: 28px;
-  height: 28px;
+  width: 33px;
+  height: 33px;
 }
 
 .footer-bottom {
-  margin-top: 1.65rem;
-  padding-top: 0.95rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 1.7rem;
+  padding-top: 1.45rem;
+  border-top: 1px solid rgba(175, 215, 197, 0.16);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
-  color: #a5c4b8;
-  font-size: 0.8rem;
+  color: #9dbdb1;
+  font-size: 0.78rem;
+  font-weight: 500;
 }
 
 .footer-bottom p {
@@ -671,11 +688,12 @@ a {
 
 .footer-policy-links {
   display: flex;
-  gap: 1rem;
+  gap: 2.05rem;
 }
 
 .footer-policy-links a {
   text-decoration: none;
+  color: inherit;
 }
 
 .toast {
@@ -726,6 +744,7 @@ a {
   .footer-bottom {
     flex-direction: column;
     align-items: center;
+    gap: 0.9rem;
   }
 }
 
