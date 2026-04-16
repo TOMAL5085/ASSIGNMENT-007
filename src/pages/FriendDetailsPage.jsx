@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import InteractionIcon from '../components/InteractionIcon'
 import LoadingSpinner from '../components/LoadingSpinner'
 import { useAppContext } from '../context/AppContext'
-import { formatDateLabel, getStatusMeta } from '../utils/formatters'
+import { formatDateTwoLine, getStatusMeta } from '../utils/formatters'
 
 const quickActions = [
   { key: 'call', label: 'Call' },
@@ -38,6 +38,7 @@ const FriendDetailsPage = () => {
   }
 
   const statusMeta = getStatusMeta(friend.status)
+  const nextDueDate = formatDateTwoLine(friend.next_due_date)
 
   return (
     <div className="container page-details">
@@ -77,15 +78,20 @@ const FriendDetailsPage = () => {
         <section className="details-main-column">
           <div className="summary-grid details-stats-grid">
             <article className="summary-card">
-              <h2>{friend.days_since_contact}</h2>
+              <h2 className="details-stat-value details-stat-number">
+                {friend.days_since_contact}
+              </h2>
               <p>Days Since Contact</p>
             </article>
             <article className="summary-card">
-              <h2>{friend.goal}</h2>
+              <h2 className="details-stat-value details-stat-number">{friend.goal}</h2>
               <p>Goal (Days)</p>
             </article>
             <article className="summary-card">
-              <h2>{formatDateLabel(friend.next_due_date)}</h2>
+              <h2 className="details-stat-value details-stat-date">
+                <span className="details-stat-date-line">{nextDueDate.primary}</span>
+                <span className="details-stat-date-line">{nextDueDate.secondary}</span>
+              </h2>
               <p>Next Due</p>
             </article>
           </div>

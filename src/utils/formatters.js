@@ -7,6 +7,20 @@
   })
 }
 
+export const formatDateTwoLine = (value) => {
+  const date = new Date(value)
+
+  return {
+    primary: `${date.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric'
+    })},`,
+    secondary: date.toLocaleDateString('en-US', {
+      year: 'numeric'
+    })
+  }
+}
+
 export const formatShortAgo = (days) => `${days}d ago`
 
 export const getStatusMeta = (status) => {
