@@ -4,6 +4,7 @@
 :root {
   --bg-page: #f3f5f8;
   --bg-surface: #ffffff;
+  --header-height: 63px;
   --text-primary: #1f2937;
   --text-muted: #8b97a7;
   --text-soft: #6a7788;
@@ -76,6 +77,9 @@ a {
 .site-header {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 80;
 }
 
 .nav-shell {
@@ -914,10 +918,10 @@ a {
 
 .toast-stack {
   position: fixed;
-  top: 0.9rem;
+  top: calc(var(--header-height) + 0.5rem);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 70;
+  z-index: 95;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1006,6 +1010,10 @@ a {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-height: 57px;
+  }
+
   .container {
     width: min(1068px, 100% - 1.1rem);
   }
@@ -1049,13 +1057,6 @@ a {
     align-items: flex-start;
   }
 
-  .toast-stack {
-    top: 0.72rem;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-  }
-
   .toast {
     max-width: min(95vw, 340px);
   }
@@ -1078,6 +1079,10 @@ a {
 }
 
 @media (max-width: 480px) {
+  :root {
+    --header-height: 55px;
+  }
+
   .nav-shell {
     min-height: 54px;
     gap: 0.45rem;
