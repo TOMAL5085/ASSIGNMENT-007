@@ -1,4 +1,4 @@
-﻿import { Archive, BellRing, Trash2 } from 'lucide-react'
+﻿import { Archive, BellRing, House, Trash2 } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import InteractionIcon from '../components/InteractionIcon'
 import LoadingSpinner from '../components/LoadingSpinner'
@@ -27,13 +27,18 @@ const FriendDetailsPage = () => {
 
   if (!friend) {
     return (
-      <div className="container not-found-inline">
-        <h1>Friend not found</h1>
-        <p>This friend profile is unavailable or no longer exists.</p>
-        <Link className="btn-primary" to="/">
-          Back to Home
+      <section className="page-not-found-video-style">
+        <p className="notfound-code">404</p>
+        <h1>Page Not Found</h1>
+        <p className="notfound-subtitle">
+          Looks like this friendship link is broken. The page you&apos;re looking for
+          doesn&apos;t exist or has been moved.
+        </p>
+        <Link className="btn-primary notfound-home-btn" to="/">
+          <House size={14} />
+          <span>Back to Home</span>
         </Link>
-      </div>
+      </section>
     )
   }
 
@@ -45,7 +50,13 @@ const FriendDetailsPage = () => {
       <div className="details-layout">
         <aside>
           <article className="panel friend-profile-panel">
-            <img src={friend.picture} alt={friend.name} className="friend-avatar-lg" />
+            <img
+              src={friend.picture}
+              alt={friend.name}
+              className="friend-avatar-lg"
+              loading="lazy"
+              decoding="async"
+            />
             <h1>{friend.name}</h1>
             <span className={`badge-status ${statusMeta.className}`}>{statusMeta.label}</span>
 
@@ -61,15 +72,23 @@ const FriendDetailsPage = () => {
             <p className="friend-email">Preferred: {friend.email}</p>
           </article>
 
-          <button className="action-row" type="button">
+          <button
+            className="action-row"
+            type="button"
+            aria-label={`Snooze ${friend.name} for 2 weeks`}
+          >
             <BellRing size={14} />
             <span>Snooze 2 Weeks</span>
           </button>
-          <button className="action-row" type="button">
+          <button className="action-row" type="button" aria-label={`Archive ${friend.name}`}>
             <Archive size={14} />
             <span>Archive</span>
           </button>
-          <button className="action-row action-row-danger" type="button">
+          <button
+            className="action-row action-row-danger"
+            type="button"
+            aria-label={`Delete ${friend.name}`}
+          >
             <Trash2 size={14} />
             <span>Delete</span>
           </button>
@@ -117,6 +136,7 @@ const FriendDetailsPage = () => {
                   className="quick-action-btn"
                   type="button"
                   onClick={() => addInteraction(action.key, friend)}
+                  aria-label={`${action.label} with ${friend.name}`}
                 >
                   <InteractionIcon type={action.key} className="interaction-icon" />
                   <span>{action.label}</span>
@@ -131,4 +151,3 @@ const FriendDetailsPage = () => {
 }
 
 export default FriendDetailsPage
-

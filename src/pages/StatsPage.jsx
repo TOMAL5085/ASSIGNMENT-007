@@ -35,7 +35,7 @@ const StatsPage = () => {
         <h2>By Interaction Type</h2>
 
         {timelineEntries.length === 0 ? (
-          <p className="empty-state-message">No interactions logged yet.</p>
+          <p className="stats-empty-state">No interactions logged yet.</p>
         ) : (
           <>
             <div className="chart-wrap">

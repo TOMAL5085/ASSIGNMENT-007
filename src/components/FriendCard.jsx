@@ -5,8 +5,18 @@ const FriendCard = ({ friend }) => {
   const statusMeta = getStatusMeta(friend.status)
 
   return (
-    <Link className="friend-card" to={`/friends/${friend.id}`}>
-      <img src={friend.picture} alt={friend.name} className="friend-avatar" />
+    <Link
+      className="friend-card"
+      to={`/friends/${friend.id}`}
+      aria-label={`Open details for ${friend.name}`}
+    >
+      <img
+        src={friend.picture}
+        alt={friend.name}
+        className="friend-avatar"
+        loading="lazy"
+        decoding="async"
+      />
       <h3>{friend.name}</h3>
       <p className="friend-days">{formatShortAgo(friend.days_since_contact)}</p>
 

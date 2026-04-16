@@ -1,9 +1,10 @@
-﻿import {
+import {
   createContext,
   useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState
 } from 'react'
 import { interactionTitle } from '../utils/formatters'
@@ -16,6 +17,7 @@ export const AppProvider = ({ children }) => {
   const [friendsError, setFriendsError] = useState('')
   const [timelineEntries, setTimelineEntries] = useState([])
   const [toasts, setToasts] = useState([])
+  const toastTimeoutIdsRef = useRef(new Set())
 
   useEffect(() => {
     let isCancelled = false
@@ -31,6 +33,9 @@ export const AppProvider = ({ children }) => {
         }
 
         const payload = await response.json()
+        if (!Array.isArray(payload)) {
+          throw new Error('Invalid friends data format.')
+        }
 
         await new Promise((resolve) => {
           setTimeout(resolve, 700)
@@ -57,6 +62,17 @@ export const AppProvider = ({ children }) => {
     }
   }, [])
 
+  useEffect(() => {
+    const timeoutIds = toastTimeoutIdsRef.current
+
+    return () => {
+      timeoutIds.forEach((timeoutId) => {
+        window.clearTimeout(timeoutId)
+      })
+      timeoutIds.clear()
+    }
+  }, [])
+
   const showToast = useCallback((payload) => {
     const nextToast =
       typeof payload === 'string'
@@ -65,24 +81,30 @@ export const AppProvider = ({ children }) => {
             message: payload?.message || ''
           }
 
+    if (!nextToast.message) {
+      return
+    }
+
     const id = Date.now() + Math.random()
     setToasts((prev) => [...prev, { ...nextToast, id }])
 
-    setTimeout(() => {
+    const timeoutId = window.setTimeout(() => {
       setToasts((prev) => prev.filter((toast) => toast.id !== id))
+      toastTimeoutIdsRef.current.delete(timeoutId)
     }, 3000)
+    toastTimeoutIdsRef.current.add(timeoutId)
   }, [])
 
   const addInteraction = useCallback(
     (type, friend) => {
       const entry = {
-        id: Date.now(),
+        id: Date.now() + Math.random(),
         type,
         title: interactionTitle(type, friend.name),
         date: new Date().toISOString()
       }
 
-      setTimelineEntries((prev) => [entry, ...prev])
+      setTimelineEntries((prev) => [entry, ...prev].slice(0, 250))
       showToast(`${entry.title}!`)
     },
     [showToast]
@@ -121,5 +143,3 @@ export const useAppContext = () => {
 
   return context
 }
-
-

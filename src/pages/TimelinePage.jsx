@@ -47,7 +47,7 @@ const TimelinePage = () => {
       </select>
 
       {filteredEntries.length === 0 ? (
-        <p className="empty-state-message">No data found!</p>
+        <p className="timeline-empty-state">No data found!</p>
       ) : (
         <div className="timeline-list">
           {filteredEntries.map((entry) => {

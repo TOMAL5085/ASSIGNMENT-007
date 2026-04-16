@@ -9,8 +9,11 @@ const AppLayout = () => {
 
   return (
     <div className="site-root">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <Navbar />
-      <main className="site-main">
+      <main className="site-main" id="main-content">
         <Outlet />
       </main>
       <Footer />

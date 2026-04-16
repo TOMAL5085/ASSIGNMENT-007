@@ -5,8 +5,11 @@ import Navbar from '../components/Navbar'
 const NotFoundPage = () => {
   return (
     <div className="site-root">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <Navbar />
-      <main className="site-main">
+      <main className="site-main" id="main-content">
         <section className="page-not-found-video-style">
           <p className="notfound-code">404</p>
           <h1>Page Not Found</h1>
