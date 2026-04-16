@@ -340,6 +340,9 @@ a {
 }
 
 .friend-profile-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
@@ -357,10 +360,12 @@ a {
   height: 74px;
   border-radius: 999px;
   object-fit: cover;
+  display: block;
+  margin: 0 auto 0.55rem;
 }
 
 .friend-profile-panel h1 {
-  margin: 0.6rem 0 0.25rem;
+  margin: 0 0 0.35rem;
   font-size: 1.5rem;
 }
 
@@ -452,7 +457,9 @@ a {
 }
 
 .details-stats-grid .summary-card h2 {
-  font-size: clamp(1.15rem, 2.1vw, 1.9rem);
+  font-size: clamp(1.02rem, 1.85vw, 1.9rem);
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .panel h2 {

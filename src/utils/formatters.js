@@ -27,4 +27,3 @@ export const interactionTitle = (type, name) => {
   const proper = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()
   return `${proper} with ${name}`
 }
-

@@ -6,7 +6,9 @@
     "email": "david.kim.1@example.com",
     "days_since_contact": 62,
     "status": "almost due",
-    "tags": ["work"],
+    "tags": [
+      "work"
+    ],
     "bio": "We met through our product team and still share work updates every month.",
     "goal": 30,
     "next_due_date": "2026-04-20"
@@ -18,7 +20,9 @@
     "email": "emma.wilson.1@example.com",
     "days_since_contact": 62,
     "status": "overdue",
-    "tags": ["family"],
+    "tags": [
+      "family"
+    ],
     "bio": "A close relative who moved abroad. We usually keep in touch by message.",
     "goal": 30,
     "next_due_date": "2026-02-27"
@@ -30,7 +34,9 @@
     "email": "lisa.nakamura.1@example.com",
     "days_since_contact": 62,
     "status": "overdue",
-    "tags": ["work"],
+    "tags": [
+      "work"
+    ],
     "bio": "We co-led a project launch and now exchange ideas about product strategy.",
     "goal": 30,
     "next_due_date": "2026-03-03"
@@ -42,7 +48,10 @@
     "email": "james.wright.1@example.com",
     "days_since_contact": 62,
     "status": "overdue",
-    "tags": ["hobby", "travel"],
+    "tags": [
+      "hobby",
+      "travel"
+    ],
     "bio": "We met in a cycling meetup and still plan occasional weekend trips.",
     "goal": 30,
     "next_due_date": "2026-03-05"
@@ -54,7 +63,9 @@
     "email": "david.kim.2@example.com",
     "days_since_contact": 62,
     "status": "overdue",
-    "tags": ["work"],
+    "tags": [
+      "work"
+    ],
     "bio": "A former teammate from my first role. We like to discuss industry trends.",
     "goal": 30,
     "next_due_date": "2026-03-06"
@@ -66,7 +77,9 @@
     "email": "emma.wilson.2@example.com",
     "days_since_contact": 62,
     "status": "on-track",
-    "tags": ["family"],
+    "tags": [
+      "family"
+    ],
     "bio": "We schedule regular family check-ins and celebrate milestones together.",
     "goal": 30,
     "next_due_date": "2026-04-29"
@@ -78,7 +91,9 @@
     "email": "lisa.nakamura.2@example.com",
     "days_since_contact": 62,
     "status": "on-track",
-    "tags": ["work"],
+    "tags": [
+      "work"
+    ],
     "bio": "We exchange quick updates after each client sprint and share resources.",
     "goal": 30,
     "next_due_date": "2026-04-30"
@@ -90,7 +105,10 @@
     "email": "james.wright.2@example.com",
     "days_since_contact": 62,
     "status": "almost due",
-    "tags": ["hobby", "travel"],
+    "tags": [
+      "hobby",
+      "travel"
+    ],
     "bio": "We are in the same photography group and review each other's shots monthly.",
     "goal": 30,
     "next_due_date": "2026-04-19"
@@ -102,7 +120,9 @@
     "email": "david.kim.3@example.com",
     "days_since_contact": 62,
     "status": "almost due",
-    "tags": ["work"],
+    "tags": [
+      "work"
+    ],
     "bio": "We were introduced through a startup accelerator and still exchange ideas.",
     "goal": 30,
     "next_due_date": "2026-04-18"
@@ -114,7 +134,9 @@
     "email": "emma.wilson.3@example.com",
     "days_since_contact": 62,
     "status": "overdue",
-    "tags": ["family"],
+    "tags": [
+      "family"
+    ],
     "bio": "A cousin who lives in another city. We usually reconnect over voice notes.",
     "goal": 30,
     "next_due_date": "2026-03-08"
@@ -126,7 +148,9 @@
     "email": "lisa.nakamura.3@example.com",
     "days_since_contact": 62,
     "status": "overdue",
-    "tags": ["work"],
+    "tags": [
+      "work"
+    ],
     "bio": "We mentor junior designers together and sync on mentorship plans.",
     "goal": 30,
     "next_due_date": "2026-03-09"
@@ -138,7 +162,10 @@
     "email": "james.wright.3@example.com",
     "days_since_contact": 62,
     "status": "on-track",
-    "tags": ["hobby", "travel"],
+    "tags": [
+      "hobby",
+      "travel"
+    ],
     "bio": "We meet for weekend hikes and keep our trip bucket-list updated.",
     "goal": 30,
     "next_due_date": "2026-05-01"
