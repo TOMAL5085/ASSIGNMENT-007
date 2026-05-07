@@ -138,9 +138,3 @@ This project is deployed on **Netlify**. A `public/_redirects` file is included 
 ```
 /*    /index.html   200
 ```
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
