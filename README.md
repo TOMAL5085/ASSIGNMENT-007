@@ -2,15 +2,6 @@
 
 KeenKeeper is a responsive friendship tracker built with React 19 and Vite. It helps you stay on top of meaningful relationships by tracking friends, setting interaction goals, spotting overdue contacts, and logging your communication history — all in a clean, data-driven dashboard.
 
----
-
-## 🖼️ Screenshot
-
-> _Add a screenshot of your app here_
-> `![KeenKeeper Screenshot](./assets/screenshot.png)`
-
----
-
 ## 🔗 Live Demo
 
 👉 [View Live Project](https://assignment-007-keenkeeper.netlify.app)
